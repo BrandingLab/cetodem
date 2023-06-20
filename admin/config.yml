@@ -1,0 +1,2310 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: About , key: 74843a53'
+            label: Text
+            name: 74843a53
+            widget: string
+          - hint: 'Original text: Products , key: 38c07b1c'
+            label: Text
+            name: 38c07b1c
+            widget: string
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: >-
+              Original text: Moisturizing Cream for All Skin Types, key:
+              -1cae5da2
+            label: Text
+            name: '-1cae5da2'
+            widget: string
+          - hint: >-
+              Original text: Cetoderm is an intensive moisturizing and emollient
+              cream suitable for daily use on all skin types and for dry skin
+              conditions. It moisturizes and protects the skin from drying out
+              and can be used as a soap substitute., key: -35e77c61
+            label: Text
+            name: '-35e77c61'
+            widget: text
+          - hint: 'Original text: View Products, key: -1b2ccb81'
+            label: Text
+            name: '-1b2ccb81'
+            widget: string
+          - hint: 'Original text: About Cetoderm, key: 1edbadcc'
+            label: Text
+            name: 1edbadcc
+            widget: string
+          - hint: >-
+              Original text: Cetoderm offers a range of products that is
+              suitable for daily use on all skin types and all dry skin
+              conditions. Cetoderm’s topical emollients, oils and ointments help
+              alleviate dry itchy and eczema prone skin whilst protecting it
+              from drying out. Our emollient range can be used as an effective
+              soap substitute., key: -55d57e94
+            label: Text
+            name: '-55d57e94'
+            widget: text
+          - hint: 'Original text: Clinically proven to moisturise, key: -120e90d3'
+            label: Text
+            name: '-120e90d3'
+            widget: string
+          - hint: 'Original text: Paraben, SLS Free + Paraben Free, key: 48b08c5'
+            label: Text
+            name: 48b08c5
+            widget: string
+          - hint: 'Original text: Endorsed by a Dermatologist, key: 4469a9ea'
+            label: Text
+            name: 4469a9ea
+            widget: string
+          - hint: 'Original text: Not tested on animals, key: 6cca9758'
+            label: Text
+            name: 6cca9758
+            widget: string
+          - hint: 'Original text: Products, key: -37f9ca7c'
+            label: Text
+            name: '-37f9ca7c'
+            widget: string
+          - hint: 'Original text: Discover our full range of products, key: -144f465c'
+            label: Text
+            name: '-144f465c'
+            widget: string
+          - hint: 'Original text: Cetoderm - Dry Skin Emollient, key: 6b0b4f55'
+            label: Text
+            name: 6b0b4f55
+            widget: string
+          - hint: 'Original text: View product, key: -22087d6c'
+            label: Text
+            name: '-22087d6c'
+            widget: string
+          - hint: 'Original text: Cetoderm-E Dry Skin Emollient, key: -3a042036'
+            label: Text
+            name: '-3a042036'
+            widget: string
+          - hint: 'Original text: Cetoderm-X Eczema Care Cream, key: 37ec3fda'
+            label: Text
+            name: 37ec3fda
+            widget: string
+          - hint: >-
+              Original text: Cetoderm baby + junior Dry Skin Emollient, key:
+              14d692da
+            label: Text
+            name: 14d692da
+            widget: string
+          - hint: 'Original text: Shop, key: 274f16'
+            label: Text
+            name: 274f16
+            widget: string
+          - hint: >-
+              Original text: Cetoderm is available at your favorite stores. If
+              it is unavailable at your local store, you can ask your pharmacist
+              to order it for you., key: -735e1d67
+            label: Text
+            name: '-735e1d67'
+            widget: text
+          - hint: 'Original text: Customer Feedback, key: -5c701679'
+            label: Text
+            name: '-5c701679'
+            widget: string
+          - hint: >-
+              Original text: Hear from those who have tried our products, key:
+              -37fc1653
+            label: Text
+            name: '-37fc1653'
+            widget: string
+          - hint: >-
+              Original text: The best cream for eczema/dry skin and everyday use
+              for the whole family. From my newborn up to my parents, we all use
+              and love it., key: 7dc99234
+            label: Text
+            name: 7dc99234
+            widget: text
+          - hint: 'Original text: Handre Smit, key: -9b2787d'
+            label: Text
+            name: '-9b2787d'
+            widget: string
+          - hint: >-
+              Original text: Excellent product. My baby has severe eczema; it
+              soothes and moisturisers his skin. We also use it as a soap
+              substitute. We noticed a difference within only 2 days., key:
+              -3035a385
+            label: Text
+            name: '-3035a385'
+            widget: text
+          - hint: 'Original text: Michelle Campbell, key: 5809d163'
+            label: Text
+            name: 5809d163
+            widget: string
+          - hint: >-
+              Original text: Miracle product! It cleanses, clears and smoothens
+              the eczema/dryness for my boys. My newborn and toddler are sharing
+              it, the results are remarkable. Thank you Bennetts!, key: 34cf997d
+            label: Text
+            name: 34cf997d
+            widget: text
+          - hint: 'Original text: Mbali Khoketsi, key: 63541d55'
+            label: Text
+            name: 63541d55
+            widget: string
+          - hint: >-
+              Original text: What an amazing product! M little girl’s skin looks
+              and feels amazing. The dry patches are gone and her skin texture
+              has improved. As a bonus it is very affordable., key: -6e379e63
+            label: Text
+            name: '-6e379e63'
+            widget: text
+          - hint: 'Original text: Sibongile Precious, key: -42474082'
+            label: Text
+            name: '-42474082'
+            widget: string
+          - hint: >-
+              Original text: The absolute best product for eczema and extremely
+              dry, cracked skin by far! HIGHLY RECOMMEND!, key: -4d73cc7d
+            label: Text
+            name: '-4d73cc7d'
+            widget: text
+          - hint: 'Original text: Rhashida, key: 6fb3f246'
+            label: Text
+            name: 6fb3f246
+            widget: string
+          - hint: >-
+              Original text: I love this emollient! I use it for my own skin. I
+              live in a dry hot climate, and I can apply this product without
+              feeling uncomfortable. I use it as a soap substitute as well.,
+              key: 7cdacdf3
+            label: Text
+            name: 7cdacdf3
+            widget: text
+          - hint: 'Original text: Nonthando Khumalo, key: aa80668'
+            label: Text
+            name: aa80668
+            widget: string
+          - hint: >-
+              Original text: I have been using cortisone creams for my severe
+              eczema, until someone recommended this product. It has changed my
+              life, I no longer use any cortisone, and my skin has never been
+              better., key: 624bc903
+            label: Text
+            name: 624bc903
+            widget: text
+          - hint: 'Original text: Ansa Du Preez, key: -27077a92'
+            label: Text
+            name: '-27077a92'
+            widget: string
+          - hint: "Original text: This heavenly product is doing a better job than the more expensive ones that are available at the pharmacies. I found a forever product.\_ No more sore, itchy, flaky eczema for me and my teenager!, key: -4ed88cb8"
+            label: Text
+            name: '-4ed88cb8'
+            widget: text
+          - hint: 'Original text: Thabile Nkosi, key: eecbff5'
+            label: Text
+            name: eecbff5
+            widget: string
+          - hint: >-
+              Original text: Our team will respond to your message within 24
+              hours, key: -7c9c58a5
+            label: Text
+            name: '-7c9c58a5'
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Subject, key: -c1d12f4'
+            label: Text
+            name: '-c1d12f4'
+            widget: string
+          - hint: 'Original text: Message , key: -17b09ae7'
+            label: Text
+            name: '-17b09ae7'
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: >-
+              Original text: Cetoderm offers a range of products that is
+              suitable for daily use on all skin types and all dry skin
+              conditions., key: 1124c656
+            label: Text
+            name: 1124c656
+            widget: text
+          - hint: 'Original text: Socials, key: -164c917a'
+            label: Text
+            name: '-164c917a'
+            widget: string
+          - hint: 'Original text: Head Office, key: 2c9310fc'
+            label: Text
+            name: 2c9310fc
+            widget: string
+          - hint: >-
+              Original text: BENNETT BROTHERS ccP O Box 76005 I Wendywood I 2144
+              South Africa, key: -9971ced
+            label: Text
+            name: '-9971ced'
+            widget: string
+          - hint: 'Original text: Customer Care Line, key: 1fd59e01'
+            label: Text
+            name: 1fd59e01
+            widget: string
+          - hint: 'Original text: +27 11 608 3733, key: 69fef376'
+            label: Text
+            name: 69fef376
+            widget: string
+          - hint: 'Original text: info@cetoderm.co.za, key: -3f65261a'
+            label: Text
+            name: '-3f65261a'
+            widget: string
+          - hint: 'Original text: ©2023 Cetoderm. All Rights Reserved, key: 6ab21ef'
+            label: Text
+            name: 6ab21ef
+            widget: string
+          - hint: 'Original text: Privacy policy, key: -922d316'
+            label: Text
+            name: '-922d316'
+            widget: string
+          - hint: 'Original text: Website developed by , key: 53746d60'
+            label: Text
+            name: 53746d60
+            widget: string
+          - hint: 'Original text: brandinglab, key: -3b54f4e'
+            label: Text
+            name: '-3b54f4e'
+            widget: string
+          - hint: 'Original text: Close, key: 3e2edd8'
+            label: Text
+            name: 3e2edd8
+            widget: string
+          - hint: 'Original text: Product Details, key: -7a50b42f'
+            label: Text
+            name: '-7a50b42f'
+            widget: string
+          - hint: >-
+              Original text: Cetoderm is an intensive moisturiser and emollient
+              cream that is suitable for daily use on all skin types and dry
+              skin conditions. It helps to alleviate dry, itchy eczema prone
+              skin and moisturises whilst protecting it from drying out. Can be
+              used as soap substitute., key: 4e260f9
+            label: Text
+            name: 4e260f9
+            widget: text
+          - hint: 'Original text: Colour Free, key: 6cda2440'
+            label: Text
+            name: 6cda2440
+            widget: string
+          - hint: 'Original text: Fragrance Free, key: -7803d1e3'
+            label: Text
+            name: '-7803d1e3'
+            widget: string
+          - hint: 'Original text: Paraben Free, key: 296ff501'
+            label: Text
+            name: 296ff501
+            widget: string
+          - hint: >-
+              Original text: Cetoderm-E is a topical emollient that helps
+              alleviate dry, itchy and eczema prone skin whilst protecting it
+              from drying out. It is suitable for daily use on all skin types
+              and dry skin conditions., key: 4a619d76
+            label: Text
+            name: 4a619d76
+            widget: text
+          - hint: 'Original text: Directions for use:, key: -3abaadca'
+            label: Text
+            name: '-3abaadca'
+            widget: string
+          - hint: >-
+              Original text: Apply directly to the skin to moisturise and soften
+              very dry skin. As a soap substitute apply directly to the affected
+              area and use warm water to create a lather. Rinse off., key:
+              35984ad3
+            label: Text
+            name: 35984ad3
+            widget: text
+          - hint: >-
+              Original text: Cetoderm-X is a creamy, long lasting topical
+              emollient that helps provide fast, long lasting relief from dry,
+              itchy and eczema prone skin whilst protecting it from drying out.
+              It is easy to apply and is suitable for daily use on all skin
+              types and dry skin conditions. Suitable as a soap substitute.,
+              key: -7cd7f4e8
+            label: Text
+            name: '-7cd7f4e8'
+            widget: text
+          - hint: >-
+              Original text: Apply directly to the skin to moisturise and soften
+              very dry skin as often as needed. As a soap substitute apply
+              directly to the affected area and use warm water to create a
+              lather. Rinse off., key: -495c5dda
+            label: Text
+            name: '-495c5dda'
+            widget: text
+          - hint: 'Original text: Cortisone Free, key: -52bca682'
+            label: Text
+            name: '-52bca682'
+            widget: string
+          - hint: >-
+              Original text: Cetoderm baby + juniorDry Skin Emollient, key:
+              1f246bdc
+            label: Text
+            name: 1f246bdc
+            widget: string
+          - hint: >-
+              Original text: Cetoderm baby+junior is a topical emollient that
+              helps alleviate dry, itchy and eczema prone skin whilst protecting
+              it from drying out. It is suitable for daily use on all skin types
+              and for all dry skin conditions. Can be used as a soap
+              substitute., key: -18bf584
+            label: Text
+            name: '-18bf584'
+            widget: text
+          - hint: 'Original text: Page Not Found, key: -40b0787c'
+            label: Text
+            name: '-40b0787c'
+            widget: string
+          - hint: >-
+              Original text: The page you are looking for doesn't exist or has
+              been moved, key: 556d64d8
+            label: Text
+            name: 556d64d8
+            widget: string
+          - hint: 'Original text: Go Home, key: 6b29b517'
+            label: Text
+            name: 6b29b517
+            widget: string
+          - hint: 'Original text: Protected Page, key: -11d4bbff'
+            label: Text
+            name: '-11d4bbff'
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: Client-First — Version 2, key: -56ec8934'
+            label: Text
+            name: '-56ec8934'
+            widget: string
+          - hint: 'Original text: Style Guide, key: -7aba473'
+            label: Text
+            name: '-7aba473'
+            widget: string
+          - hint: 'Original text: Client-First, key: 7102fa2e'
+            label: Text
+            name: 7102fa2e
+            widget: string
+          - hint: >-
+              Original text:  is a set of guidelines and strategies created by ,
+              key: -4a8ea4e
+            label: Text
+            name: '-4a8ea4e'
+            widget: string
+          - hint: 'Original text: Finsweet, key: -23be2a1b'
+            label: Text
+            name: '-23be2a1b'
+            widget: string
+          - hint: |-
+              Original text:  to help you build Webflow websites.
+                                , key: 4c64459f
+            label: Text
+            name: 4c64459f
+            widget: string
+          - hint: 'Original text: Structure Classes, key: 3ae1b639'
+            label: Text
+            name: 3ae1b639
+            widget: string
+          - hint: >-
+              Original text: Defined and flexible core structure we can use on
+              all or most pages., key: 24021488
+            label: Text
+            name: '24021488'
+            widget: string
+          - hint: 'Original text: page-wrapper, key: 329acb55'
+            label: Text
+            name: 329acb55
+            widget: string
+          - hint: 'Original text: main-wrapper, key: 3a80a47f'
+            label: Text
+            name: 3a80a47f
+            widget: string
+          - hint: 'Original text: container-small, key: -28522f45'
+            label: Text
+            name: '-28522f45'
+            widget: string
+          - hint: 'Original text: container-medium, key: 135fca41'
+            label: Text
+            name: 135fca41
+            widget: string
+          - hint: 'Original text: container-large, key: -28ba0911'
+            label: Text
+            name: '-28ba0911'
+            widget: string
+          - hint: 'Original text: padding-global, key: 10e9acdf'
+            label: Text
+            name: 10e9acdf
+            widget: string
+          - hint: 'Original text: padding-section-small, key: -5efc9c9d'
+            label: Text
+            name: '-5efc9c9d'
+            widget: string
+          - hint: 'Original text: padding-section-medium, key: 74bc8c99'
+            label: Text
+            name: 74bc8c99
+            widget: string
+          - hint: 'Original text: padding-section-large, key: -5f647669'
+            label: Text
+            name: '-5f647669'
+            widget: string
+          - hint: 'Original text: button-group, key: -8f47bdc'
+            label: Text
+            name: '-8f47bdc'
+            widget: string
+          - hint: 'Original text: HTML Heading Tags, key: 391be0c'
+            label: Text
+            name: 391be0c
+            widget: string
+          - hint: >-
+              Original text: HTML tags define default Heading styles., key:
+              43cf7afc
+            label: Text
+            name: 43cf7afc
+            widget: string
+          - hint: 'Original text: H1, key: 8e9'
+            label: Text
+            name: '8e9'
+            widget: string
+          - hint: >-
+              Original text: Sample text helps you understand how real text may
+              look. Sample text is being used as a placeholder., key: -4f1619c4
+            label: Text
+            name: '-4f1619c4'
+            widget: text
+          - hint: 'Original text: H2, key: 8ea'
+            label: Text
+            name: 8ea
+            widget: string
+          - hint: >-
+              Original text: Sample text helps you understand how real text may
+              look on your website. Sample text is being used as a placeholder
+              for real text that is normally present., key: d743a9b
+            label: Text
+            name: d743a9b
+            widget: text
+          - hint: 'Original text: Other HTML Tags, key: e88725e'
+            label: Text
+            name: e88725e
+            widget: string
+          - hint: >-
+              Original text: HTML tags define default text styles., key:
+              -22da9155
+            label: Text
+            name: '-22da9155'
+            widget: string
+          - hint: 'Original text: All paragraphs, key: -1a178f3c'
+            label: Text
+            name: '-1a178f3c'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website. Sample text is being used
+              as a placeholder for real text., key: ff56e0c
+            label: Text
+            name: ff56e0c
+            widget: text
+          - hint: 'Original text: All links, key: 63e805a'
+            label: Text
+            name: 63e805a
+            widget: string
+          - hint: 'Original text: All Links, key: 47b903a'
+            label: Text
+            name: 47b903a
+            widget: string
+          - hint: 'Original text: All quotes, key: -353c8b0a'
+            label: Text
+            name: '-353c8b0a'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website., key: 7a61e105
+            label: Text
+            name: 7a61e105
+            widget: text
+          - hint: "Original text: All\_Ordered Lists, key: 30eeb903"
+            label: Text
+            name: 30eeb903
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present., key: -6aeb2b17
+            label: Text
+            name: '-6aeb2b17'
+            widget: string
+          - hint: 'Original text: All Unordered Lists, key: -73afc0b6'
+            label: Text
+            name: '-73afc0b6'
+            widget: string
+          - hint: 'Original text: Heading Styles, key: -68232b00'
+            label: Text
+            name: '-68232b00'
+            widget: string
+          - hint: >-
+              Original text: Heading classes when typography style doesn't match
+              the default HTML tag., key: 1c6fd230
+            label: Text
+            name: 1c6fd230
+            widget: string
+          - hint: 'Original text: heading-style-h1, key: -362a6a30'
+            label: Text
+            name: '-362a6a30'
+            widget: string
+          - hint: >-
+              Original text: Sample text helps you understand how real text may
+              look., key: 795559fd
+            label: Text
+            name: 795559fd
+            widget: string
+          - hint: 'Original text: heading-style-h2, key: -362a6a2f'
+            label: Text
+            name: '-362a6a2f'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder. Sample
+              text helps you understand how real text may look., key: 606ad71e
+            label: Text
+            name: 606ad71e
+            widget: text
+          - hint: 'Original text: heading-style-h3, key: -362a6a2e'
+            label: Text
+            name: '-362a6a2e'
+            widget: string
+          - hint: 'Original text: heading-style-h4, key: -362a6a2d'
+            label: Text
+            name: '-362a6a2d'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder. Sample
+              text helps you understand how real text may look. Sample text is
+              being used as a placeholder for real text that is normally
+              present., key: 2014e52b
+            label: Text
+            name: 2014e52b
+            widget: text
+          - hint: 'Original text: heading-style-h5, key: -362a6a2c'
+            label: Text
+            name: '-362a6a2c'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder. Sample
+              text helps you understand how real text may look. Sample text is
+              being used as a placeholder for real text that is normally
+              present. Sample text helps you understand how real text may look.,
+              key: -643be8ae
+            label: Text
+            name: '-643be8ae'
+            widget: text
+          - hint: 'Original text: heading-style-h6, key: -362a6a2b'
+            label: Text
+            name: '-362a6a2b'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look. Sample text is being used as a placeholder
+              for real text that is normally present. Sample text helps you
+              understand how real text may look., key: -61518f78
+            label: Text
+            name: '-61518f78'
+            widget: text
+          - hint: 'Original text: Text Classes, key: -77cc77cd'
+            label: Text
+            name: '-77cc77cd'
+            widget: string
+          - hint: >-
+              Original text: Text classes when typography style doesn't match
+              the default HTML tag., key: -681e9125
+            label: Text
+            name: '-681e9125'
+            widget: string
+          - hint: 'Original text: Text Sizes, key: -73a8f021'
+            label: Text
+            name: '-73a8f021'
+            widget: string
+          - hint: 'Original text: text-size-large, key: -75d7fcf1'
+            label: Text
+            name: '-75d7fcf1'
+            widget: string
+          - hint: 'Original text: text-size-medium, key: -4340bddf'
+            label: Text
+            name: '-4340bddf'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present on your website., key: -79834566
+            label: Text
+            name: '-79834566'
+            widget: text
+          - hint: 'Original text: text-size-regular, key: -1c283d90'
+            label: Text
+            name: '-1c283d90'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website. , key: -2e25c045
+            label: Text
+            name: '-2e25c045'
+            widget: text
+          - hint: 'Original text: text-size-small, key: -75702325'
+            label: Text
+            name: '-75702325'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present on your website. Sample text helps
+              you understand how real text may look on your website. , key:
+              3e2b742c
+            label: Text
+            name: 3e2b742c
+            widget: text
+          - hint: 'Original text: text-size-tiny, key: -6f243f54'
+            label: Text
+            name: '-6f243f54'
+            widget: string
+          - hint: 'Original text: Text Styles, key: -da6ccb'
+            label: Text
+            name: '-da6ccb'
+            widget: string
+          - hint: 'Original text: text-style-strikethrough, key: -613aa0e9'
+            label: Text
+            name: '-613aa0e9'
+            widget: string
+          - hint: 'Original text: text-style-italic, key: -1e09a194'
+            label: Text
+            name: '-1e09a194'
+            widget: string
+          - hint: 'Original text: text-style-muted, key: -5b95aa51'
+            label: Text
+            name: '-5b95aa51'
+            widget: string
+          - hint: 'Original text: text-style-allcaps, key: -576c60ba'
+            label: Text
+            name: '-576c60ba'
+            widget: string
+          - hint: 'Original text: text-style-nowrap, key: -15bdc639'
+            label: Text
+            name: '-15bdc639'
+            widget: string
+          - hint: 'Original text: text-style-link, key: 4f9fb336'
+            label: Text
+            name: 4f9fb336
+            widget: string
+          - hint: 'Original text: text-style-quote, key: -5b5d5d40'
+            label: Text
+            name: '-5b5d5d40'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder., key:
+              1108a7df
+            label: Text
+            name: 1108a7df
+            widget: string
+          - hint: 'Original text: text-style-2lines, key: -7c513db7'
+            label: Text
+            name: '-7c513db7'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website. Sample text is being used
+              as a placeholder for real text text-style-2lines, key: -1da0aff5
+            label: Text
+            name: '-1da0aff5'
+            widget: text
+          - hint: 'Original text: text-style-3lines, key: -7a9c6518'
+            label: Text
+            name: '-7a9c6518'
+            widget: string
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website. Sample text is being used
+              as a placeholder for real text. Sample text is being used as a
+              placeholder for real text that is normally present. Sample text
+              helps you understand how real text may look on your website.
+              Sample text is being used as a placeholder for real text., key:
+              7116bef8
+            label: Text
+            name: 7116bef8
+            widget: text
+          - hint: 'Original text: Text Weights, key: -6156a2f8'
+            label: Text
+            name: '-6156a2f8'
+            widget: string
+          - hint: 'Original text: text-weight-xbold, key: -6542b3f8'
+            label: Text
+            name: '-6542b3f8'
+            widget: string
+          - hint: 'Original text: text-weight-bold, key: 704ee01a'
+            label: Text
+            name: 704ee01a
+            widget: string
+          - hint: 'Original text: text-weight-semibold, key: -399389f8'
+            label: Text
+            name: '-399389f8'
+            widget: string
+          - hint: 'Original text: text-weight-medium, key: -55b3dc36'
+            label: Text
+            name: '-55b3dc36'
+            widget: string
+          - hint: 'Original text: text-weight-normal, key: -536baec4'
+            label: Text
+            name: '-536baec4'
+            widget: string
+          - hint: 'Original text: text-weight-light, key: -65e8bddf'
+            label: Text
+            name: '-65e8bddf'
+            widget: string
+          - hint: 'Original text: Text Alignments, key: -4799cc3d'
+            label: Text
+            name: '-4799cc3d'
+            widget: string
+          - hint: 'Original text: text-align-left, key: 91bde6f'
+            label: Text
+            name: 91bde6f
+            widget: string
+          - hint: 'Original text: text-align-center, key: 224610bd'
+            label: Text
+            name: 224610bd
+            widget: string
+          - hint: 'Original text: text-align-right, key: 1ab650b4'
+            label: Text
+            name: 1ab650b4
+            widget: string
+          - hint: 'Original text: Buttons, key: 719b5761'
+            label: Text
+            name: 719b5761
+            widget: string
+          - hint: 'Original text: Button combo class system., key: -200347a9'
+            label: Text
+            name: '-200347a9'
+            widget: string
+          - hint: 'Original text: button, key: -521dd8ce'
+            label: Text
+            name: '-521dd8ce'
+            widget: string
+          - hint: 'Original text: Button Text, key: -8fb26a5'
+            label: Text
+            name: '-8fb26a5'
+            widget: string
+          - hint: 'Original text: is-small, key: -4de6515c'
+            label: Text
+            name: '-4de6515c'
+            widget: string
+          - hint: 'Original text: is-large, key: -4e4e2b28'
+            label: Text
+            name: '-4e4e2b28'
+            widget: string
+          - hint: 'Original text: is-secondary, key: -35398b6f'
+            label: Text
+            name: '-35398b6f'
+            widget: string
+          - hint: 'Original text: is-text, key: 795c03f0'
+            label: Text
+            name: 795c03f0
+            widget: string
+          - hint: 'Original text: is-icon, key: 7956fb3c'
+            label: Text
+            name: 7956fb3c
+            widget: string
+          - hint: 'Original text: Colors, key: 78a3a990'
+            label: Text
+            name: 78a3a990
+            widget: string
+          - hint: >-
+              Original text: Manage recurring text and background colors., key:
+              -e3ab416
+            label: Text
+            name: '-e3ab416'
+            widget: string
+          - hint: 'Original text: Text Colors, key: -1c74483d'
+            label: Text
+            name: '-1c74483d'
+            widget: string
+          - hint: 'Original text: text-color-black-5, key: -5d10cb23'
+            label: Text
+            name: '-5d10cb23'
+            widget: string
+          - hint: 'Original text: text-color-black, key: -1014878b'
+            label: Text
+            name: '-1014878b'
+            widget: string
+          - hint: 'Original text: text-color-black-4, key: -5d10cb24'
+            label: Text
+            name: '-5d10cb24'
+            widget: string
+          - hint: 'Original text: text-color-black-2, key: -5d10cb26'
+            label: Text
+            name: '-5d10cb26'
+            widget: string
+          - hint: 'Original text: text-color-black-1, key: -5d10cb27'
+            label: Text
+            name: '-5d10cb27'
+            widget: string
+          - hint: 'Original text: text-color-primary, key: -6dc74f08'
+            label: Text
+            name: '-6dc74f08'
+            widget: string
+          - hint: 'Original text: text-color-grey, key: -6bdd4457'
+            label: Text
+            name: '-6bdd4457'
+            widget: string
+          - hint: 'Original text: Background Colors, key: 62f36ca2'
+            label: Text
+            name: 62f36ca2
+            widget: string
+          - hint: 'Original text: background-color-black, key: 3c388ef6'
+            label: Text
+            name: 3c388ef6
+            widget: string
+          - hint: 'Original text: background-color-grey, key: 54885108'
+            label: Text
+            name: '54885108'
+            widget: string
+          - hint: 'Original text: background-color-white, key: 3d5ecb20'
+            label: Text
+            name: 3d5ecb20
+            widget: string
+          - hint: 'Original text: Max widths, key: -389eee37'
+            label: Text
+            name: '-389eee37'
+            widget: string
+          - hint: >-
+              Original text: Use the max-width CSS property to contain inner
+              content to a maximum width., key: -558c9913
+            label: Text
+            name: '-558c9913'
+            widget: string
+          - hint: 'Original text: max-width-full, key: -ed2fdc1'
+            label: Text
+            name: '-ed2fdc1'
+            widget: string
+          - hint: 'Original text: max-width-full-tablet, key: 3ce671b4'
+            label: Text
+            name: 3ce671b4
+            widget: string
+          - hint: 'Original text: max-width-full-mobile-portrait, key: -20151728'
+            label: Text
+            name: '-20151728'
+            widget: string
+          - hint: 'Original text: max-width-full-mobile-landscape, key: 2f386d1e'
+            label: Text
+            name: 2f386d1e
+            widget: string
+          - hint: 'Original text: max-width-xxlarge, key: -5dfc3175'
+            label: Text
+            name: '-5dfc3175'
+            widget: string
+          - hint: 'Original text: max-width-xlarge, key: 7828f973'
+            label: Text
+            name: 7828f973
+            widget: string
+          - hint: 'Original text: max-width-large, key: 34bed18b'
+            label: Text
+            name: 34bed18b
+            widget: string
+          - hint: 'Original text: max-width-medium, key: 65024325'
+            label: Text
+            name: '65024325'
+            widget: string
+          - hint: 'Original text: max-width-small, key: 3526ab57'
+            label: Text
+            name: 3526ab57
+            widget: string
+          - hint: 'Original text: max-width-xsmall, key: 7890d33f'
+            label: Text
+            name: 7890d33f
+            widget: string
+          - hint: 'Original text: max-width-xxsmall, key: -5d9457a9'
+            label: Text
+            name: '-5d9457a9'
+            widget: string
+          - hint: 'Original text: Paddings, key: 31f1aaa2'
+            label: Text
+            name: 31f1aaa2
+            widget: string
+          - hint: >-
+              Original text: Utility spacing system - padding classes.
+              [padding-direction] + [padding-size]., key: db1fdd3
+            label: Text
+            name: db1fdd3
+            widget: string
+          - hint: 'Original text: Direction Classes, key: 109fc445'
+            label: Text
+            name: 109fc445
+            widget: string
+          - hint: 'Original text: padding-bottom, key: 88e4367'
+            label: Text
+            name: '88e4367'
+            widget: string
+          - hint: 'Original text: padding-top, key: -5987fe67'
+            label: Text
+            name: '-5987fe67'
+            widget: string
+          - hint: 'Original text: padding-vertical, key: 2737b1b2'
+            label: Text
+            name: 2737b1b2
+            widget: string
+          - hint: 'Original text: padding-horizontal, key: 7e873760'
+            label: Text
+            name: '7e873760'
+            widget: string
+          - hint: 'Original text: padding-left, key: 28846843'
+            label: Text
+            name: '28846843'
+            widget: string
+          - hint: 'Original text: padding-right, key: -17a0fea0'
+            label: Text
+            name: '-17a0fea0'
+            widget: string
+          - hint: 'Original text: Size Classes, key: ca50f07'
+            label: Text
+            name: ca50f07
+            widget: string
+          - hint: 'Original text: padding-0, key: -6b2e7e8c'
+            label: Text
+            name: '-6b2e7e8c'
+            widget: string
+          - hint: 'Original text: padding-tiny, key: 28881b3c'
+            label: Text
+            name: 28881b3c
+            widget: string
+          - hint: 'Original text: padding-xxsmall, key: -5bb29bb5'
+            label: Text
+            name: '-5bb29bb5'
+            widget: string
+          - hint: 'Original text: padding-xsmall, key: 2e4dc8cb'
+            label: Text
+            name: 2e4dc8cb
+            widget: string
+          - hint: 'Original text: padding-small, key: -17912bb5'
+            label: Text
+            name: '-17912bb5'
+            widget: string
+          - hint: 'Original text: padding-medium, key: 1abf38b1'
+            label: Text
+            name: 1abf38b1
+            widget: string
+          - hint: 'Original text: padding-large, key: -17f90581'
+            label: Text
+            name: '-17f90581'
+            widget: string
+          - hint: 'Original text: padding-xlarge, key: 2de5eeff'
+            label: Text
+            name: 2de5eeff
+            widget: string
+          - hint: 'Original text: padding-xxlarge, key: -5c1a7581'
+            label: Text
+            name: '-5c1a7581'
+            widget: string
+          - hint: 'Original text: padding-huge, key: 2882d2e7'
+            label: Text
+            name: 2882d2e7
+            widget: string
+          - hint: 'Original text: padding-xhuge, key: -174cb199'
+            label: Text
+            name: '-174cb199'
+            widget: string
+          - hint: 'Original text: padding-xxhuge, key: 2e9242e7'
+            label: Text
+            name: 2e9242e7
+            widget: string
+          - hint: 'Original text: padding-custom1, key: 484f6124'
+            label: Text
+            name: 484f6124
+            widget: string
+          - hint: 'Original text: padding-custom2, key: 484f6125'
+            label: Text
+            name: 484f6125
+            widget: string
+          - hint: 'Original text: padding-custom3, key: 484f6126'
+            label: Text
+            name: 484f6126
+            widget: string
+          - hint: 'Original text: Margins, key: -6ac3379b'
+            label: Text
+            name: '-6ac3379b'
+            widget: string
+          - hint: >-
+              Original text: Utility spacing system - padding classes.
+              [margin-direction] + [margin-size]., key: -2063c60d
+            label: Text
+            name: '-2063c60d'
+            widget: string
+          - hint: 'Original text: margin-bottom, key: 7c565f2a'
+            label: Text
+            name: 7c565f2a
+            widget: string
+          - hint: 'Original text: margin-top, key: 756c34b6'
+            label: Text
+            name: 756c34b6
+            widget: string
+          - hint: 'Original text: margin-vertical, key: -3698174b'
+            label: Text
+            name: '-3698174b'
+            widget: string
+          - hint: 'Original text: margin-horizontal, key: 5585b9a3'
+            label: Text
+            name: 5585b9a3
+            widget: string
+          - hint: 'Original text: margin-left, key: 381698c6'
+            label: Text
+            name: 381698c6
+            widget: string
+          - hint: 'Original text: margin-right, key: -34ed1ec3'
+            label: Text
+            name: '-34ed1ec3'
+            widget: string
+          - hint: 'Original text: margin-0, key: e81d7d1'
+            label: Text
+            name: e81d7d1
+            widget: string
+          - hint: 'Original text: margin-tiny, key: 381a4bbf'
+            label: Text
+            name: 381a4bbf
+            widget: string
+          - hint: 'Original text: margin-xxsmall, key: -56773f18'
+            label: Text
+            name: '-56773f18'
+            widget: string
+          - hint: 'Original text: margin-xsmall, key: -5dea1b72'
+            label: Text
+            name: '-5dea1b72'
+            widget: string
+          - hint: 'Original text: margin-small, key: -34dd4bd8'
+            label: Text
+            name: '-34dd4bd8'
+            widget: string
+          - hint: 'Original text: margin-medium, key: -7178ab8c'
+            label: Text
+            name: '-7178ab8c'
+            widget: string
+          - hint: 'Original text: margin-large, key: -354525a4'
+            label: Text
+            name: '-354525a4'
+            widget: string
+          - hint: 'Original text: margin-xlarge, key: -5e51f53e'
+            label: Text
+            name: '-5e51f53e'
+            widget: string
+          - hint: 'Original text: margin-xxlarge, key: -56df18e4'
+            label: Text
+            name: '-56df18e4'
+            widget: string
+          - hint: 'Original text: margin-huge, key: 3815036a'
+            label: Text
+            name: 3815036a
+            widget: string
+          - hint: 'Original text: margin-xhuge, key: -3498d1bc'
+            label: Text
+            name: '-3498d1bc'
+            widget: string
+          - hint: 'Original text: margin-xxhuge, key: -5da5a156'
+            label: Text
+            name: '-5da5a156'
+            widget: string
+          - hint: 'Original text: margin-custom1, key: 4d8abdc1'
+            label: Text
+            name: 4d8abdc1
+            widget: string
+          - hint: 'Original text: margin-custom2, key: 4d8abdc2'
+            label: Text
+            name: 4d8abdc2
+            widget: string
+          - hint: 'Original text: margin-custom3, key: 4d8abdc3'
+            label: Text
+            name: 4d8abdc3
+            widget: string
+          - hint: 'Original text: Icons, key: 43362fa'
+            label: Text
+            name: 43362fa
+            widget: string
+          - hint: 'Original text: Unify icons sizes. , key: -2cf900ff'
+            label: Text
+            name: '-2cf900ff'
+            widget: string
+          - hint: 'Original text: icon-height, key: 7a5274fb'
+            label: Text
+            name: 7a5274fb
+            widget: string
+          - hint: 'Original text:  sets height of icons. , key: 71c35fad'
+            label: Text
+            name: 71c35fad
+            widget: string
+          - hint: 'Original text: icon-1x1, key: -2c0e6caa'
+            label: Text
+            name: '-2c0e6caa'
+            widget: string
+          - hint: >-
+              Original text:  sets both height and width of icons., key:
+              24d32471
+            label: Text
+            name: 24d32471
+            widget: string
+          - hint: 'Original text: icon-height-small, key: 78b935b5'
+            label: Text
+            name: 78b935b5
+            widget: string
+          - hint: 'Original text: icon-height-medium, key: -6c3efb79'
+            label: Text
+            name: '-6c3efb79'
+            widget: string
+          - hint: 'Original text: icon-height-large, key: 78515be9'
+            label: Text
+            name: 78515be9
+            widget: string
+          - hint: 'Original text: icon-1x1-small, key: -581f1c30'
+            label: Text
+            name: '-581f1c30'
+            widget: string
+          - hint: 'Original text: icon-1x1-medium, key: 498f19cc'
+            label: Text
+            name: 498f19cc
+            widget: string
+          - hint: 'Original text: icon-1x1-large, key: -5886f5fc'
+            label: Text
+            name: '-5886f5fc'
+            widget: string
+          - hint: 'Original text: Useful utility systems, key: -5f19a7fa'
+            label: Text
+            name: '-5f19a7fa'
+            widget: string
+          - hint: >-
+              Original text: Utility classes we like to use in most of our
+              projects to build faster., key: -171f51ce
+            label: Text
+            name: '-171f51ce'
+            widget: string
+          - hint: 'Original text: hide, key: 30dd42'
+            label: Text
+            name: 30dd42
+            widget: string
+          - hint: 'Original text: This element is hidden, key: bfe805a'
+            label: Text
+            name: bfe805a
+            widget: string
+          - hint: 'Original text: hide-tablet, key: -527642af'
+            label: Text
+            name: '-527642af'
+            widget: string
+          - hint: 'Original text: hide-mobile-portrait, key: -3429a225'
+            label: Text
+            name: '-3429a225'
+            widget: string
+          - hint: 'Original text: hide-mobile-landscape, key: -3f446785'
+            label: Text
+            name: '-3f446785'
+            widget: string
+          - hint: 'Original text: overflow-visible, key: -5c729a59'
+            label: Text
+            name: '-5c729a59'
+            widget: string
+          - hint: 'Original text: overflow-hidden, key: -6d7ad22b'
+            label: Text
+            name: '-6d7ad22b'
+            widget: string
+          - hint: 'Original text: overflow-auto, key: 21707c9a'
+            label: Text
+            name: 21707c9a
+            widget: string
+          - hint: 'Original text: overflow-scroll, key: -5b038908'
+            label: Text
+            name: '-5b038908'
+            widget: string
+          - hint: 'Original text: pointer-events-on, key: 5dfdcb83'
+            label: Text
+            name: 5dfdcb83
+            widget: string
+          - hint: 'Original text: pointer-events-off, key: 61bba44b'
+            label: Text
+            name: 61bba44b
+            widget: string
+          - hint: 'Original text: layer, key: 61fd551'
+            label: Text
+            name: 61fd551
+            widget: string
+          - hint: 'Original text: div-square, key: 35b129d9'
+            label: Text
+            name: 35b129d9
+            widget: string
+          - hint: 'Original text: spacing-clean, key: 7387303f'
+            label: Text
+            name: 7387303f
+            widget: string
+          - hint: 'Original text: align-center, key: 325fa01d'
+            label: Text
+            name: 325fa01d
+            widget: string
+          - hint: 'Original text: z-index-1, key: 5f060ba3'
+            label: Text
+            name: 5f060ba3
+            widget: string
+          - hint: 'Original text: z-index-2, key: 5f060ba4'
+            label: Text
+            name: 5f060ba4
+            widget: string
+          - hint: 'Original text: display-inlineflex, key: 29f753fd'
+            label: Text
+            name: 29f753fd
+            widget: string
+          - hint: 'Original text: Webflow elements, key: 7f8c94f5'
+            label: Text
+            name: 7f8c94f5
+            widget: string
+          - hint: >-
+              Original text: Native Webflow elements with Client-First classes
+              applied., key: 61b8185
+            label: Text
+            name: 61b8185
+            widget: string
+          - hint: 'Original text: form_component, key: -708600be'
+            label: Text
+            name: '-708600be'
+            widget: string
+          - hint: >-
+              Original text: Example of a form component using Folders, key:
+              -1ab561c4
+            label: Text
+            name: '-1ab561c4'
+            widget: string
+          - hint: 'Original text: Text Input, key: -7433b8e9'
+            label: Text
+            name: '-7433b8e9'
+            widget: string
+          - hint: 'Original text: Text Area, key: 360b43a0'
+            label: Text
+            name: 360b43a0
+            widget: string
+          - hint: 'Original text: Select field, key: 2b9f90f6'
+            label: Text
+            name: 2b9f90f6
+            widget: string
+          - hint: 'Original text: Select one..., key: 57f3b1cc'
+            label: Text
+            name: 57f3b1cc
+            widget: string
+          - hint: 'Original text: First Choice, key: -491b32af'
+            label: Text
+            name: '-491b32af'
+            widget: string
+          - hint: 'Original text: Second Choice, key: 3c4172cd'
+            label: Text
+            name: 3c4172cd
+            widget: string
+          - hint: 'Original text: Third Choice, key: -1b351146'
+            label: Text
+            name: '-1b351146'
+            widget: string
+          - hint: 'Original text: Checkbox field, key: -70558183'
+            label: Text
+            name: '-70558183'
+            widget: string
+          - hint: 'Original text: Checkbox, key: 5f757fe3'
+            label: Text
+            name: 5f757fe3
+            widget: string
+          - hint: 'Original text: Radio button, key: 739c6f17'
+            label: Text
+            name: 739c6f17
+            widget: string
+          - hint: 'Original text: Radio, key: 4b123db'
+            label: Text
+            name: 4b123db
+            widget: string
+          - hint: 'Original text: text-rich-text, key: 41067ade'
+            label: Text
+            name: 41067ade
+            widget: string
+          - hint: 'Original text: Heading 1, key: 6af22973'
+            label: Text
+            name: 6af22973
+            widget: string
+          - hint: 'Original text: Heading 2, key: 6af22974'
+            label: Text
+            name: 6af22974
+            widget: string
+          - hint: 'Original text: Heading 3, key: 6af22975'
+            label: Text
+            name: 6af22975
+            widget: string
+          - hint: 'Original text: Heading 4, key: 6af22976'
+            label: Text
+            name: 6af22976
+            widget: string
+          - hint: 'Original text: Heading 5, key: 6af22977'
+            label: Text
+            name: 6af22977
+            widget: string
+          - hint: 'Original text: Heading 6, key: 6af22978'
+            label: Text
+            name: 6af22978
+            widget: string
+          - hint: 'Original text: Sample text with a , key: 402e601c'
+            label: Text
+            name: 402e601c
+            widget: string
+          - hint: 'Original text: link, key: 32affa'
+            label: Text
+            name: 32affa
+            widget: string
+          - hint: >-
+              Original text:  is being used as a placeholder for real text that
+              is normally present. Sample text helps you understand how real
+              text may look on your website. Sample text is being used as a
+              placeholder for real text. Sample text is being used as a
+              placeholder for real text. Sample text is being used as a
+              placeholder for real text., key: -57f27aa9
+            label: Text
+            name: '-57f27aa9'
+            widget: text
+          - hint: >-
+              Original text: Sample text is being used as a placeholder for real
+              text that is normally present. Sample text helps you understand
+              how real text may look on your website. Sample text is being used
+              as a placeholder for real text that is normally present., key:
+              667d63e4
+            label: Text
+            name: 667d63e4
+            widget: text
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: #Hero--section, key: fe2f28'
+            label: Link
+            name: fe2f28
+            widget: string
+          - hint: 'Original link: #About-Us, key: -5645a5bf'
+            label: Link
+            name: '-5645a5bf'
+            widget: string
+          - hint: 'Original link: #Product-Section, key: -44598abc'
+            label: Link
+            name: '-44598abc'
+            widget: string
+          - hint: 'Original link: #Contact-Us-Section, key: 7afef406'
+            label: Link
+            name: 7afef406
+            widget: string
+          - hint: 'Original link: https://www.spar.co.za/Home, key: -c84cf81'
+            label: Link
+            name: '-c84cf81'
+            widget: string
+          - hint: 'Original link: https://clicks.co.za/, key: 6befde5a'
+            label: Link
+            name: 6befde5a
+            widget: string
+          - hint: 'Original link: https://www.takealot.com/, key: 620612ff'
+            label: Link
+            name: 620612ff
+            widget: string
+          - hint: 'Original link: https://www.brandinglab.co.za/, key: -6a03f698'
+            label: Link
+            name: '-6a03f698'
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: https://client-first.webflow.io/, key: -740f2794'
+            label: Link
+            name: '-740f2794'
+            widget: string
+          - hint: 'Original link: https://finsweet.com/client-first, key: 6fa3e116'
+            label: Link
+            name: 6fa3e116
+            widget: string
+          - hint: 'Original link: https://finsweet.com/, key: 95466e8'
+            label: Link
+            name: '95466e8'
+            widget: string
+          - hint: 'Original link: http://finsweet.com, key: 9cd90ea'
+            label: Link
+            name: 9cd90ea
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: '-619fb045'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1c3ceee9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1019fe14'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-29110a36'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4de2f4f9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4bcb77d3'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '795257e2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1be62678'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 32cd775d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1bd80ef7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1bc9f776'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5b2a80e7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7254a77b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2aac513e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-944182a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-615bfca'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4dbb9407'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 133bdd47
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 76d0d550
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-b0e1ac8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6856c842
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 29422b61
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c6e0747
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 8e50cc6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c2791c2
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 8d6f545
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 9013bc8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 8f32447
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 90f5349
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-28e3a522'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c35a943
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c43c0c4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c51d845
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c5fefc6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c7c1ec8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c8a3649
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7c984dca
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 8c8ddc4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-22e74305'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '30e21189'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7b2c6c6d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7b3a83ee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7b489b6f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5983445c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1dc31c62
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2111fb26
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 61f69b53
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 439dd4c0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6087357f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7a700be7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3cbca8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: c8a5c77
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
