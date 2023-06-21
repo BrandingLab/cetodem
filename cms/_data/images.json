@@ -3,8 +3,8 @@
     "url": "/assets/images/cetoderm-logo.svg",
     "alt": "Cetoderm Logo\n"
   },
-  "-1c3ceee9": {
-    "url": "/assets/documents/istockphoto-1353452519-640_adpp_is.mp4",
+  "-6bc5463": {
+    "url": "/assets/documents/gettyimages-1353452519.mp4",
     "alt": ""
   },
   "-1019fe14": {
@@ -43,6 +43,10 @@
     "url": "/assets/images/img-3.png",
     "alt": ""
   },
+  "-1c3ceee9": {
+    "url": "/assets/documents/istockphoto-1353452519-640_adpp_is.mp4",
+    "alt": ""
+  },
   "5b2a80e7": {
     "url": "/assets/images/istockphoto-1342050299-1024x1024.jpg",
     "alt": ""
@@ -70,10 +74,6 @@
   "133bdd47": {
     "url": "/assets/images/not-tested-on-animals.svg",
     "alt": ""
-  },
-  "76d0d550": {
-    "url": "/assets/images/cetoderm-dry-skin-emollient.png",
-    "alt": "Cetoderm - Dry Skin Emollient - Image "
   },
   "-b0e1ac8": {
     "url": "/assets/images/cetoderm-e-dry-skin-emollient.png",
@@ -159,14 +159,6 @@
     "url": "/assets/images/icon.svg",
     "alt": "Follow Cetoderm on Instagram"
   },
-  "7b2c6c6d": {
-    "url": "/assets/images/icon-1.svg",
-    "alt": "Follow Cetoderm on LinkedIn"
-  },
-  "7b3a83ee": {
-    "url": "/assets/images/icon-2.svg",
-    "alt": "Follow Cetoderm on Twitter "
-  },
   "7b489b6f": {
     "url": "/assets/images/icon-3.svg",
     "alt": "Follow Cetoderm on Facebook\n"
@@ -178,6 +170,10 @@
   "1dc31c62": {
     "url": "/assets/images/tick-primary.svg",
     "alt": ""
+  },
+  "76d0d550": {
+    "url": "/assets/images/cetoderm-dry-skin-emollient.png",
+    "alt": "Cetoderm - Dry Skin Emollient - Image "
   },
   "2111fb26": {
     "url": "/assets/images/tick-blue.svg",
@@ -191,12 +187,12 @@
     "url": "/assets/images/tick-yellow.svg",
     "alt": ""
   },
-  "-6087357f": {
-    "url": "/assets/external/page-not-found.211a85e40c.svg",
-    "alt": ""
-  },
   "-7a700be7": {
     "url": "/assets/external/utility-lock.ae54711958.svg",
+    "alt": ""
+  },
+  "-6087357f": {
+    "url": "/assets/external/page-not-found.211a85e40c.svg",
     "alt": ""
   },
   "-3cbca8bd": {

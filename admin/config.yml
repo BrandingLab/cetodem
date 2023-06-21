@@ -257,10 +257,10 @@ collections:
             name: 37ec3fda
             widget: string
           - hint: >-
-              Original text: Cetoderm baby + junior Dry Skin Emollient, key:
-              14d692da
+              Original text: Cetoderm Baby + Junior Dry Skin Emollient, key:
+              -773b0926
             label: Text
-            name: 14d692da
+            name: '-773b0926'
             widget: string
           - hint: 'Original text: Shop, key: 274f16'
             label: Text
@@ -305,6 +305,12 @@ collections:
           - hint: 'Original text: Michelle Campbell, key: 5809d163'
             label: Text
             name: 5809d163
+            widget: string
+          - hint: >-
+              Original text: Cetoderm baby + junior Dry Skin Emollient, key:
+              14d692da
+            label: Text
+            name: 14d692da
             widget: string
           - hint: >-
               Original text: Miracle product! It cleanses, clears and smoothens
@@ -539,6 +545,16 @@ collections:
             label: Text
             name: '-18bf584'
             widget: text
+          - hint: 'Original text: Protected Page, key: -11d4bbff'
+            label: Text
+            name: '-11d4bbff'
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
           - hint: 'Original text: Page Not Found, key: -40b0787c'
             label: Text
             name: '-40b0787c'
@@ -552,16 +568,6 @@ collections:
           - hint: 'Original text: Go Home, key: 6b29b517'
             label: Text
             name: 6b29b517
-            widget: string
-          - hint: 'Original text: Protected Page, key: -11d4bbff'
-            label: Text
-            name: '-11d4bbff'
-            widget: string
-          - hint: >-
-              Original text: Incorrect password. Please try again., key:
-              -f5c4b5f
-            label: Text
-            name: '-f5c4b5f'
             widget: string
           - hint: 'Original text: Client-First — Version 2, key: -56ec8934'
             label: Text
@@ -1599,6 +1605,18 @@ collections:
             label: Link
             name: 620612ff
             widget: string
+          - hint: 'Original link: https://www.instagram.com/cetoderm/, key: -5defdada'
+            label: Link
+            name: '-5defdada'
+            widget: string
+          - hint: 'Original link: https://www.facebook.com/cetoderm, key: 3a089c49'
+            label: Link
+            name: 3a089c49
+            widget: string
+          - hint: 'Original link: mailto:info@cetoderm.co.za, key: 2f9640de'
+            label: Link
+            name: 2f9640de
+            widget: string
           - hint: 'Original link: https://www.brandinglab.co.za/, key: -6a03f698'
             label: Link
             name: '-6a03f698'
@@ -1645,7 +1663,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-1c3ceee9'
+            name: '-6bc5463'
             widget: object
             fields:
               - name: url
@@ -1775,6 +1793,19 @@ collections:
                 widget: string
                 required: false
           - label: Image
+            name: '-1c3ceee9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
             name: 5b2a80e7
             widget: object
             fields:
@@ -1854,19 +1885,6 @@ collections:
                 required: false
           - label: Image
             name: 133bdd47
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 76d0d550
             widget: object
             fields:
               - name: url
@@ -2152,32 +2170,6 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 7b2c6c6d
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 7b3a83ee
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
             name: 7b489b6f
             widget: object
             fields:
@@ -2205,6 +2197,19 @@ collections:
                 required: false
           - label: Image
             name: 1dc31c62
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 76d0d550
             widget: object
             fields:
               - name: url
@@ -2256,7 +2261,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-6087357f'
+            name: '-7a700be7'
             widget: object
             fields:
               - name: url
@@ -2269,7 +2274,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-7a700be7'
+            name: '-6087357f'
             widget: object
             fields:
               - name: url
@@ -2307,4 +2312,5 @@ collections:
                 label: Image Alt
                 widget: string
                 required: false
+local_backend: true
 publish_mode: editorial_workflow
