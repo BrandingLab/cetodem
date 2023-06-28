@@ -3,6 +3,7 @@ backend:
   accept_roles:
     - admin
     - editor
+  branch: master
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
@@ -425,11 +426,21 @@ collections:
             label: Text
             name: 2c9310fc
             widget: string
-          - hint: >-
-              Original text: BENNETT BROTHERS ccP O Box 76005 I Wendywood I 2144
-              South Africa, key: -9971ced
+          - hint: 'Original text: BENNETT BROTHERS cc, key: -4dcae1d1'
             label: Text
-            name: '-9971ced'
+            name: '-4dcae1d1'
+            widget: string
+          - hint: 'Original text: P O Box 76005, key: 44d641e0'
+            label: Text
+            name: 44d641e0
+            widget: string
+          - hint: 'Original text: Wendywood, 2144, key: 5d2c7ef5'
+            label: Text
+            name: 5d2c7ef5
+            widget: string
+          - hint: 'Original text: South Africa, key: 2754886d'
+            label: Text
+            name: 2754886d
             widget: string
           - hint: 'Original text: Customer Care Line, key: 1fd59e01'
             label: Text
